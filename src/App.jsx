@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { miniApp } from '@telegram-apps/sdk'
 import heart from './heart.svg'
 import './App.css'
 
 function App() {
+	miniApp.active()
+
 	const [isDarkMode, setIsDarkMode] = useState(false)
 	const [headerText, setHeaderText] = useState('Ты меня любишь?')
 	const [yesButtonText, setYesButtonText] = useState('ДА')
