@@ -7,18 +7,21 @@
 		"cra-template": "1.2.0",
 		"gh-pages": "^6.3.0",
 		"node-telegram-bot-api": "^0.66.0",
+		"querystring-es3": "^0.2.1",
 		"react": "^19.0.0",
+		"react-app-rewired": "^2.2.1",
 		"react-dom": "^19.0.0",
 		"react-router-dom": "^7.1.5",
 		"react-scripts": "5.0.1",
+		"util": "^0.12.5",
 		"web-vitals": "^4.2.4"
 	},
 	"homepage": "https://ofmouze.github.io/valentines-app/",
 	"scripts": {
 		"predeploy": "bun run build",
 		"deploy": "gh-pages -d build",
-		"start": "react-scripts start",
-		"build": "react-scripts build",
+		"start": "react-app-rewired start",
+		"build": "react-app-rewired build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},

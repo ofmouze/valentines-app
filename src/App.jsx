@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import Telegram from 'node-telegram-bot-api'
+import { useEffect } from 'react'
 import heart from './heart.svg'
 import './App.css'
 
 function App() {
-	document.addEventListener('DOMContentLoaded', function () {
-		Telegram.WebApp.ready()()
-	})
-
-	// Когда страница готова к отображению:
-	Telegram.WebApp.expand() // Раскрывает окно на всю высоту.
+	useEffect(() => {
+		if (window.Telegram && window.Telegram.WebApp) {
+			window.Telegram.WebApp.ready()
+			window.Telegram.WebApp.expand()
+		}
+	}, [])
 
 	const [isDarkMode, setIsDarkMode] = useState(false)
 	const [headerText, setHeaderText] = useState('Ты меня любишь?')
