@@ -4,6 +4,13 @@ import heart from './heart.svg'
 import './App.css'
 
 function App() {
+	document.addEventListener('DOMContentLoaded', function () {
+		Telegram.WebApp.ready()()
+	})
+
+	// Когда страница готова к отображению:
+	Telegram.WebApp.expand() // Раскрывает окно на всю высоту.
+
 	const [isDarkMode, setIsDarkMode] = useState(false)
 	const [headerText, setHeaderText] = useState('Ты меня любишь?')
 	const [yesButtonText, setYesButtonText] = useState('ДА')
@@ -117,12 +124,5 @@ function App() {
 		</div>
 	)
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-	Telegram.WebApp.ready()()
-})
-
-// Когда страница готова к отображению:
-Telegram.WebApp.expand() // Раскрывает окно на всю высоту.
 
 export default App
