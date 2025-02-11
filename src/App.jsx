@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { miniApp, requestFullscreen } from '@telegram-apps/sdk'
+import { hapticFeedback, miniApp, requestFullscreen } from '@telegram-apps/sdk'
 import heart from './heart.svg'
 import './App.css'
 
@@ -13,6 +13,10 @@ function App() {
 	const [showLightContainer, setShowLightContainer] = useState(false)
 	const [isSubContainerVisible, setIsSubContainerVisible] = useState(true)
 	const handleYesClick = () => {
+		if (hapticFeedback.notificationOccurred.isAvailable()) {
+			hapticFeedback.notificationOccurred('success')
+		}
+
 		setIsSubContainerVisible(false)
 		document.querySelector('.main-container').classList.add('light')
 
@@ -26,6 +30,10 @@ function App() {
 	}
 
 	const handleNoClick = () => {
+		if (hapticFeedback.notificationOccurred.isAvailable()) {
+			hapticFeedback.notificationOccurred('warning')
+		}
+
 		const noBtn = document.getElementById('nobtn')
 		const yesBtn = document.getElementById('yesbtn')
 
