@@ -13,9 +13,7 @@ function App() {
 	const [showLightContainer, setShowLightContainer] = useState(false)
 	const [isSubContainerVisible, setIsSubContainerVisible] = useState(true)
 	const handleYesClick = () => {
-		if (hapticFeedback.notificationOccurred.isAvailable()) {
-			hapticFeedback.notificationOccurred('success')
-		}
+		hapticFeedback.notificationOccurred('success')
 
 		setIsSubContainerVisible(false)
 		document.querySelector('.main-container').classList.add('light')
@@ -30,9 +28,7 @@ function App() {
 	}
 
 	const handleNoClick = () => {
-		if (hapticFeedback.notificationOccurred.isAvailable()) {
-			hapticFeedback.notificationOccurred('warning')
-		}
+		hapticFeedback.notificationOccurred('warning')
 
 		const noBtn = document.getElementById('nobtn')
 		const yesBtn = document.getElementById('yesbtn')
