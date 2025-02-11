@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
+//import { web_app_request_fullscreen, web_app_ready } from '@telegram-apps/sdk'
 import heart from './heart.svg'
 import './App.css'
 
 function App() {
 	useEffect(() => {
+		// Эта функция сигнализирует о том, что приложение готово
 		if (window.Telegram && window.Telegram.WebApp) {
 			window.Telegram.WebApp.ready()
-			window.Telegram.WebApp.expand()
+			window.Telegram.WebApp.requestFullScreen()
 		}
 	}, [])
 
