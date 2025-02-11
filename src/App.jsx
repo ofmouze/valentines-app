@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Telegram from 'node-telegram-bot-api'
 import heart from './heart.svg'
 import './App.css'
 
@@ -116,5 +117,12 @@ function App() {
 		</div>
 	)
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+	Telegram.WebApp.ready()()
+})
+
+// Когда страница готова к отображению:
+Telegram.WebApp.expand() // Раскрывает окно на всю высоту.
 
 export default App
