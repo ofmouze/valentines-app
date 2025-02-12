@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
-import { hapticFeedback, miniApp, requestFullscreen } from '@telegram-apps/sdk'
+import { init, hapticFeedback, viewport } from '@telegram-apps/sdk'
 import heart from './heart.svg'
 import './App.css'
 
-function App() {
-	miniApp.active()
-	requestFullscreen()
+init()
+viewport.mount()
+hapticFeedback.mount()
 
+viewport.expand()
+
+function App() {
 	const [isDarkMode, setIsDarkMode] = useState(false)
 	const [headerText, setHeaderText] = useState('Ты меня любишь?')
 	const [yesButtonText, setYesButtonText] = useState('ДА')
 	const [showLightContainer, setShowLightContainer] = useState(false)
 	const [isSubContainerVisible, setIsSubContainerVisible] = useState(true)
 	const handleYesClick = () => {
-		hapticFeedback.notificationOccurred('success')
+		hapticFeedback.impactOccurred('medium')
 
 		setIsSubContainerVisible(false)
 		document.querySelector('.main-container').classList.add('light')
@@ -28,7 +31,7 @@ function App() {
 	}
 
 	const handleNoClick = () => {
-		hapticFeedback.notificationOccurred('warning')
+		hapticFeedback.impactOccurred('medium')
 
 		const noBtn = document.getElementById('nobtn')
 		const yesBtn = document.getElementById('yesbtn')
@@ -57,6 +60,8 @@ function App() {
 
 		const mainContainer = document.querySelector('.main-container')
 		mainContainer.insertBefore(heartElement, mainContainer.firstChild)
+
+		hapticFeedback.impactOccurred('medium')
 
 		heartElement.addEventListener('animationend', () => {
 			heartElement.remove()
