@@ -7,7 +7,7 @@ init()
 viewport.mount()
 hapticFeedback.mount()
 
-viewport.expand()
+viewport.requestFullscreen()
 
 function App() {
 	const [isDarkMode, setIsDarkMode] = useState(false)
@@ -15,9 +15,8 @@ function App() {
 	const [yesButtonText, setYesButtonText] = useState('ДА')
 	const [showLightContainer, setShowLightContainer] = useState(false)
 	const [isSubContainerVisible, setIsSubContainerVisible] = useState(true)
-	const handleYesClick = () => {
-		hapticFeedback.impactOccurred('medium')
 
+	const handleYesClick = () => {
 		setIsSubContainerVisible(false)
 		document.querySelector('.main-container').classList.add('light')
 
@@ -31,8 +30,6 @@ function App() {
 	}
 
 	const handleNoClick = () => {
-		hapticFeedback.impactOccurred('medium')
-
 		const noBtn = document.getElementById('nobtn')
 		const yesBtn = document.getElementById('yesbtn')
 
@@ -60,8 +57,6 @@ function App() {
 
 		const mainContainer = document.querySelector('.main-container')
 		mainContainer.insertBefore(heartElement, mainContainer.firstChild)
-
-		hapticFeedback.impactOccurred('medium')
 
 		heartElement.addEventListener('animationend', () => {
 			heartElement.remove()
